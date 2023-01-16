@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import ExpenseItem from './ExpenseItem';
+import ExpensesFilter from './ExpensesFilter';
 import Card from '../UI/Card';
 
 
 import './Expenses.css';
 
 const Expenses = (props) => {
-    
+
+    const [filterDate, setFilterDate] = useState('2021');
+
+    const filterChangeHanlder = (filterDate) => {
+        setFilterDate(filterDate);
+        console.log(filterDate);
+    };
 
     return (
+        <div>
+            <ExpensesFilter selected={filterDate} onFilterChange={filterChangeHanlder}/>
         <Card className='expenses'>
 
         <ExpenseItem title={props.expenses[0].title} amount={props.expenses[0].amount} date={props.expenses[0].date} />
@@ -17,6 +26,7 @@ const Expenses = (props) => {
         <ExpenseItem title={props.expenses[2].title} amount={props.expenses[2].amount} date={props.expenses[2].date} />
         <ExpenseItem title={props.expenses[3].title} amount={props.expenses[3].amount} date={props.expenses[3].date} />
         </Card>
+        </div>
     );
 }
 

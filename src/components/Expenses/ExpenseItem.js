@@ -7,6 +7,7 @@ import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
 
+
     return (
         <Card className="expense-item">
         
